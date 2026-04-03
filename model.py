@@ -4,10 +4,10 @@ from sklearn.ensemble import  RandomForestRegressor
 from sklearn.metrics import mean_absolute_percentage_error as mape
 
 
-def model():
+def predict():
     x_train, y_train, x_valid, y_valid, x_test, y_test = EDA()
     lr = LinearRegression()
-    rf = RandomForestRegressor()
+    rf = RandomForestRegressor(n_estimators=200, max_depth=5 , random_state = 42)
 
     lr.fit(x_train, y_train)
     rf.fit(x_train, y_train)
@@ -27,4 +27,4 @@ def model():
     else:
         print("Linear Regression is better")
         best_model = lr
-    return best_model
+    return best_model, x_test, y_test
